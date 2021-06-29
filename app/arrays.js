@@ -4,6 +4,9 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    let first = (arr.splice(0, 1)).join()
+    arr.push(first)
+    return arr
 }
 
 
@@ -16,6 +19,13 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    let largest = 0
+    arr.forEach(num => {
+        if (num > largest) {
+            largest = num
+        }
+    });
+    return largest
 }
 
 
@@ -28,6 +38,11 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    let newArr = arr.map(num => {
+        num = num * arr.length
+        return num
+    })
+    return newArr
 }
 
 
@@ -63,6 +78,11 @@ let flights = [{
 
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
+    capsDest = destination.toUpperCase()
+    let foundFlight = flights.find(flight => flight.to == capsDest)
+    let pricing = ''
+    firstClass ? pricing = 'firstClass' : pricing = 'standard'
+    return foundFlight.prices[pricing]
 
 }
 
@@ -84,6 +104,21 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
+
+    let foundId = staff.find(staffMember => staffMember.id == id)
+    if (foundId) {
+        let outObj = {
+            id: foundId.id,
+            name: foundId.name
+        }
+        return outObj
+    }
+    else {
+        let outObj = {
+            error: "No user with that id."
+        }
+        return outObj
+    }
 
 }
 
@@ -111,4 +146,9 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    //  let foundIng = food.ingredients.find(ingredient => ingredient.name == ingName)
+    capsName = name.toUpperCase()
+    let bandMember = theBand.members.find(member => member.name.toUpperCase().includes(capsName))
+    return bandMember.name + ' is in the band and plays the ' + bandMember.instrument
+
 }

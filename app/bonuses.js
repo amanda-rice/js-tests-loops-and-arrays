@@ -69,5 +69,23 @@ function sumEqualsTarget(arr, target) {
 // output: [2, 1, 4, 3, 6, 6, 5, 9, 8]
 
 function oddAscender(arr) {
+  let odds = []
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 != 0) {
+      odds.push(arr[i])
+    }
+  }
+
+  let sortedOdds = odds.sort()
+  console.log(sortedOdds)
+  let oddIndex = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 != 0) {
+      arr.splice(i, 1, sortedOdds[oddIndex])
+      oddIndex++
+    }
+  }
+  console.log(arr)
+  return arr
 
 }
