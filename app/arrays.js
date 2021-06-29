@@ -25,6 +25,19 @@ function largestNum(arr) {
             largest = num
         }
     });
+    total = 0
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == largest) {
+            total++
+        }
+    }
+    if (total > 1) {
+        let multiple = {}
+        multiple[largest] = total
+
+        console.log('multiple', multiple)
+        return multiple
+    }
     return largest
 }
 
