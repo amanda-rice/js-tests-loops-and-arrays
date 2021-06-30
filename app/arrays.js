@@ -88,7 +88,7 @@ let flights = [{
     }
 }]
 
-
+//if you wanted to find multiple flights to one destination, you would use filter instead of find.
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
     capsDest = destination.toUpperCase()
